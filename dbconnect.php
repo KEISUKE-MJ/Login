@@ -1,7 +1,7 @@
 <?php
 
-require_once './env.php';
-ini_set('display_errors', true);
+require_once 'env.php';
+
 function connect()
 {
     $host = DB_HOST;
@@ -17,7 +17,7 @@ function connect()
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
-        echo '成功です';
+        return $pdo;
     } catch(PDOExeption $e){
 
         echo '接続失敗です'. $e->getMessage();
@@ -27,7 +27,5 @@ function connect()
     
 
 }
-
-echo connect();
 
 ?>
