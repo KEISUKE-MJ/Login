@@ -23,11 +23,17 @@ if(count($err)>0){
 }
 
  // ログインする処理
- echo 'ログインしました。';
+ $result = UserLogic::login($email, $password); 
+
+ if(!$result){
+     header('Location: login.php');
+     return;
+ }
+
+
+ echo 'ログイン成功です';
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +41,7 @@ if(count($err)>0){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーザ登録が完了しました</title>
+    <title>ログインできました</title>
 </head>
 <body>
     <?php if(count($err) > 0) : ?>
@@ -43,7 +49,7 @@ if(count($err)>0){
         <p><?php echo $e ?></p>
     <?php endforeach ?>
     <?php else : ?>
-    <p>ユーザ登録が完了しました</p>
+    <p>ログインできました</p>
     <?php endif ?>
     <a href="./login.php">戻る</a>
 </body>

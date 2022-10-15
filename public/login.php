@@ -3,7 +3,6 @@
 session_start();
 
 $err = $_SESSION;
-
 // $_SESSION = array();
 
 session_destroy();
@@ -22,6 +21,9 @@ session_destroy();
 
 <body>
     <h2>ログインフォーム</h2>
+    <?php if (isset($err['msg'])) : ?>
+        <p><?php echo $err['msg']; ?></p>
+    <?php endif; ?>
     <form action="top.php" method="POST">
         <p>
             <label for="email">メールアドレス</label>
