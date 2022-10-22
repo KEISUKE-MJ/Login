@@ -1,8 +1,8 @@
 <?php 
 
-require_once '../classes/UserLogic.php';
-
 session_start();
+
+require_once '../classes/UserLogic.php';
 
 // エラーメッセージ
 $err = [];
@@ -25,10 +25,12 @@ if(count($err)>0){
  // ログインする処理
  $result = UserLogic::login($email, $password); 
 
- if(!$result){
-     header('Location: login.php');
-     return;
- }
+ var_dump($result);
+
+//  if(!$result){
+//      header('Location: login.php');
+//      return;
+//  }
 
 
  echo 'ログイン成功です';

@@ -50,15 +50,16 @@ class UserLogic
 
         // パスワードの照会
         if(password_verify($password, $user['password'])){
+            //password_verifyがうまくいかない
             // ログイン成功
             session_regenerate_id(true);
-            $_SESSION['login_user'] = $user;
+            $_SESSION['login_user'] = $user;  
             $result = true;
             return $result;
 
         }
 
-        $_SESSION['msg'] = 'パスワードが一致しません';
+        // $_SESSION['msg'] = 'パスワードが一致しません';
         return $result;
     }
 
@@ -72,7 +73,6 @@ class UserLogic
         // SQLの準備
         // SQLの実行
         // SQLの結果を返す
-        $result = false;
         $sql = 'SELECT * FROM users WHERE email = ?';
 
         // ユーザデータを配列に入れる
